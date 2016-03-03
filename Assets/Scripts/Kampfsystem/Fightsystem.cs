@@ -4,35 +4,48 @@ using System.Collections;
 
 public class Fightsystem : MonoBehaviour {
 
-    public float energy;
-    public float punchEnergy;
-    private bool shoot;
+    [Header("Gameobjects")]
     public GameObject fireball;
+
+    [Header("Variable")]
+    public float energy;
+    public float energyGain;
+    public float fireballEnergy;
+    private bool shooted;
 
 	// Use this for initialization
 	void Start ()
     {
-        energy = 0.5f;
+        shooted = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        Shoot();
-        energy += 0.001f;
-        if (Input.GetButtonDown("Attack"))
+        if (energy < 1)
         {
-            shoot = true;
+            energy += 0.001f;
         }
-	}
 
-    void Shoot ()
-    {
-        if (shoot == true)
+        if (Input.GetButtonDown("Attack") && shooted == false && energy > fireballEnergy)
         {
+            shooted = true;
             Instantiate(fireball);
-            fireball.transform.Translate(Vector3.right * Time.deltaTime);
-            shoot = false;
+            energy -= fireballEnergy;
         }
-    }
+
+        GameObject flyingFireball = GameObject.Find("Fireball(Clone)");
+
+        if (shooted == true)
+        {
+            flyingFireball.GetComponent<Rigidbody>().AddForce(Vector3.right * 100);
+            if (flyingFireball.transform.position.y <= 0)
+            {
+                Destroy(flyingFireball);
+                shooted = false;
+            }
+        }
+        
+        
+	}
 }
