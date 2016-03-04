@@ -4,6 +4,17 @@ using System.Collections;
 
 public class Fightsystem : MonoBehaviour {
 
+<<<<<<< HEAD
+    public float energy;
+    public float punchEnergy;
+    private bool shoot;
+    public GameObject fireball;
+
+	// Use this for initialization
+	void Start ()
+    {
+        energy = 0.5f;
+=======
     [Header("Gameobjects")]
     public GameObject fireball;
 
@@ -20,15 +31,42 @@ public class Fightsystem : MonoBehaviour {
 	void Start ()
     {
         shooted = false;
+<<<<<<< HEAD
         GameObject.Find("EnduranceSlider");
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+<<<<<<< HEAD
         enduranceSlider.value = endurance;
 
         if (endurance < maxEndurance)
+=======
+<<<<<<< HEAD
+        Shoot();
+        energy += 0.001f;
+        if (Input.GetButtonDown("Attack"))
+        {
+            shoot = true;
+        }
+	}
+
+    void Shoot ()
+    {
+        if (shoot == true)
+        {
+            Instantiate(fireball);
+            fireball.transform.Translate(Vector3.right * Time.deltaTime);
+            shoot = false;
+        }
+    }
+=======
+        if (energy < 1)
+>>>>>>> origin/master
         {
             endurance += enduranceGain;
         }
@@ -52,4 +90,5 @@ public class Fightsystem : MonoBehaviour {
             }
         }        
 	}
+>>>>>>> origin/master
 }
