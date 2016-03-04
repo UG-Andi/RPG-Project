@@ -8,30 +8,36 @@ public class Fightsystem : MonoBehaviour {
     public GameObject fireball;
 
     [Header("Variable")]
-    public float energy;
-    public float energyGain;
-    public float fireballEnergy;
+    public float endurance;
+    public float maxEndurance;
+    public float enduranceGain;
+    public float fireballEndurance;
+
     private bool shooted;
+    private Slider enduranceSlider;
 
 	// Use this for initialization
 	void Start ()
     {
         shooted = false;
+        GameObject.Find("EnduranceSlider");
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (energy < 1)
+        enduranceSlider.value = endurance;
+
+        if (endurance < maxEndurance)
         {
-            energy += 0.001f;
+            endurance += enduranceGain;
         }
 
-        if (Input.GetButtonDown("Attack") && shooted == false && energy > fireballEnergy)
+        if (Input.GetButtonDown("Attack") && shooted == false && endurance > fireballEndurance)
         {
             shooted = true;
             Instantiate(fireball);
-            energy -= fireballEnergy;
+            endurance -= fireballEndurance;
         }
 
         GameObject flyingFireball = GameObject.Find("Fireball(Clone)");
@@ -44,8 +50,6 @@ public class Fightsystem : MonoBehaviour {
                 Destroy(flyingFireball);
                 shooted = false;
             }
-        }
-        
-        
+        }        
 	}
 }
