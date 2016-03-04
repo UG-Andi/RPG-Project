@@ -13,11 +13,23 @@ public class Player : MonoBehaviour {
     //Floats
     [Header("Movement")]
     public float speed;
+<<<<<<< HEAD
     private float currentSpeed;
     public float rotSpeed;
 
     //Vectors
     public Vector3 targetDir;
+=======
+<<<<<<< HEAD
+    private float currentSpeed;
+
+=======
+>>>>>>> origin/master
+    public float rotSpeed;
+
+    //Vectors
+    private Vector3 targetDir;
+>>>>>>> origin/master
 
     //Bool
     private bool canTurnRight = true;
@@ -38,13 +50,33 @@ public class Player : MonoBehaviour {
         // Vertikal
         if (v > 0.1f)
         {
+<<<<<<< HEAD
             currentSpeed = speed;
 
             transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+=======
+<<<<<<< HEAD
+            currentSpeed = speed;
+
+            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+=======
+            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+
+            targetDir = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
+
+            Vector3 playerRot = Vector3.RotateTowards(transform.forward, targetDir, rotSpeed * Time.deltaTime, 5.0f);
+
+            transform.rotation = Quaternion.LookRotation(playerRot);
+>>>>>>> origin/master
+>>>>>>> origin/master
         }
 
         if (v < -0.1f)
         {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
             currentSpeed = speed;
 
             transform.Translate(Vector3.forward * -speed * Time.deltaTime, Space.Self);
@@ -52,10 +84,26 @@ public class Player : MonoBehaviour {
 
         if (!Input.GetKey(KeyCode.Mouse2))
         {
+<<<<<<< HEAD
+=======
+=======
+            transform.Translate(Vector3.forward * -speed * Time.deltaTime, Space.Self);
+
+>>>>>>> origin/master
+>>>>>>> origin/master
             Vector3 targetDir = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
             Vector3 playerRot = Vector3.RotateTowards(transform.forward, targetDir, rotSpeed * Time.deltaTime, 5.0f);
 
             transform.rotation = Quaternion.LookRotation(playerRot);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+            canTurnRight = true;
+            canTurnLeft = true;
+>>>>>>> origin/master
+>>>>>>> origin/master
         }
 
         // Horizontal
@@ -70,18 +118,28 @@ public class Player : MonoBehaviour {
             transform.Translate(Vector3.left * speed * 0.75f * Time.deltaTime, Space.Self);
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         // Diagonal
         if (h > 0.1f && v > 0.1f || h < -0.1f && v > 0.1f || h > 0.1f && v < -0.1f || h < -0.1f && v < -0.1f)
         {
             currentSpeed = speed / 2;
         }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
         Vector3 shootDir = transform.forward;
         // Schießen
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
                 Instantiate(arrow, arrowSpawn.position, Quaternion.LookRotation(shootDir));
         }
+<<<<<<< HEAD
 
         // Raycast vorwärts
         RaycastHit hit;
@@ -93,5 +151,7 @@ public class Player : MonoBehaviour {
                 hit.collider.gameObject.GetComponent<Enemy>().UITimer = hit.collider.gameObject.GetComponent<Enemy>().showUI;
             }
         }
+=======
+>>>>>>> origin/master
     }
 }
