@@ -5,17 +5,35 @@ public class NormalArrowBehavior : MonoBehaviour
 {
     // Referenzen
     private GameObject player;
+<<<<<<< HEAD
     
 
+=======
+<<<<<<< HEAD
+    
+
+=======
+    // Floats
+>>>>>>> origin/master
+>>>>>>> origin/master
     [Header("Settings")]
     public float speed;
     public float rotationAngle;
 
     public float timer = 0.1f;
 
+<<<<<<< HEAD
     [Header("Battle")]
     public int damage;
 
+=======
+<<<<<<< HEAD
+    [Header("Battle")]
+    public int damage;
+
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
     void Start()
     {
         player = GameObject.Find("Player");
@@ -38,6 +56,7 @@ public class NormalArrowBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+<<<<<<< HEAD
         if (col.gameObject.CompareTag("Enemy") || col.gameObject.CompareTag("Enemy_Archer"))
         {
             switch (col.gameObject.tag)
@@ -53,6 +72,16 @@ public class NormalArrowBehavior : MonoBehaviour
             }
         }
 
+=======
+<<<<<<< HEAD
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            col.gameObject.GetComponent<Enemy>().GetDamage(damage);
+        }
+
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
         Destroy(gameObject);
     }
 }
